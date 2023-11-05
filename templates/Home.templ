@@ -1,0 +1,28 @@
+package templates
+
+templ Home(title string) {
+	<!DOCTYPE html>
+	<html lang="en" data-theme="dark">
+		<head>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1"/>
+			<link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.3/dist/full.css" rel="stylesheet" type="text/css"/>
+			<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+			<script src="https://unpkg.com/htmx.org@1.9.7" integrity="sha384-EAzY246d6BpbWR7sQ8+WEm40J8c3dHFsqC58IgPlh4kMbRRI6P6WA+LA/qGAyAu8" crossorigin="anonymous"></script>
+			<script src="https://cdn.tailwindcss.com"></script>
+			<script defer src="/assets/go-alpine.min.js"></script>
+			<title>{ title }</title>
+		</head>
+		<body class="flex flex-col w-screen h-screen" x-data="app()">
+			<header>
+				Template for Golang-Htmx-Alpine-Daisyui/Tailwind
+			</header>
+			<main id="main" class="flex w-full h-full">
+				Main Contents
+			</main>
+			<footer class="flex w-full h-12 bg-base-100  border-t-2">
+				Footer
+			</footer>
+		</body>
+	</html>
+}
