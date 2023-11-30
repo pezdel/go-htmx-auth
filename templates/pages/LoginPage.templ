@@ -1,0 +1,60 @@
+package pages
+
+import (
+	"github.com/pezdel/go-auth/templates/partials"
+	"github.com/pezdel/go-auth/templates/shared"
+)
+
+templ LoginPage() {
+	@shared.Home() {
+		@partials.AuthNavbar()
+		<main class="container">
+			<article class="grid loginArticle">
+				<div>
+					<hgroup>
+						<h1>Login</h1>
+						<h2>A minimalist layout for Login pages</h2>
+					</hgroup>
+					<form hx-post="/login" hx-target="#loginInputs" hx-swap="outerHTML">
+						<span id="loginInputs">
+							<input
+ 								type="email"
+ 								name="email"
+ 								placeholder="Email..."
+ 								aria-label="Email"
+ 								required
+							/>
+							<input
+ 								type="password"
+ 								name="password"
+ 								placeholder="Password..."
+ 								aria-label="Password"
+ 								required
+							/>
+						</span>
+						<span class="login-bot">
+							<fieldset>
+								<label for="remember">
+									<input type="checkbox" role="switch" id="remember" name="remember"/>
+									Remember me
+								</label>
+							</fieldset>
+							<a href="/auth/register">Register?</a>
+						</span>
+						<button type="submit" class="contrast">Login</button>
+					</form>
+				</div>
+				<div></div>
+			</article>
+			<div class="demo secondary">
+				<small>
+					Demo Email: a.a@gmail.com	
+				</small>
+				<small>
+					Demo Password: 123
+				</small>
+			</div>
+		</main>
+		@partials.Footer()
+	}
+}

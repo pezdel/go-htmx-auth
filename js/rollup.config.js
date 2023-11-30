@@ -11,7 +11,7 @@ if (process.env.production) {
 export default {
   input: "src/main.js",
   output: {
-        file: "../assets/go-template.min.js",
+        file: "../assets/alpine.min.js",
     format: "iife",
   },
   plugins,

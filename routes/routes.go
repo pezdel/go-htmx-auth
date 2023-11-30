@@ -3,11 +3,19 @@ package routes
 import (
 	"net/http"
 
-	"github.com/GeertJohan/go.rice"
+	rice "github.com/GeertJohan/go.rice"
+	"golang.org/x/time/rate"
+
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"golang.org/x/time/rate"
+	"github.com/pezdel/go-auth/domain"
+	"github.com/pezdel/go-auth/routes/handlers"
+	mw "github.com/pezdel/go-auth/routes/middleware"
 )
+
+var users = map[string]domain.User{
+	"a.a@gmail.com": {Email: "a.a@gmail.com", Password: "123"},
+}
 
 type Router struct{}
 
@@ -26,16 +34,34 @@ func (r *Router) Serve(port string) {
 	e.Pre(middleware.RemoveTrailingSlash())
 	e.Use(middleware.Recover())
 	e.Use(middleware.RateLimiter(middleware.NewRateLimiterMemoryStore(
-		rate.Limit(20),
+		rate.Limit(10),
 	)))
-
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
 		AllowOrigins: []string{"*.a.run.app", "*.vercel.app", "*://localhost:*"},
 		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
 	}))
 
-	e.GET("/", r.HomePage)
-	e.GET("/data", r.GetData)
+	//HomePage
+	e.GET("/", handlers.HomePage)
+
+	//AuthPages
+	auth := e.Group("/auth")
+	auth.Use(mw.RedirectIfAuthenticated)
+	auth.GET("/login", handlers.LoginPage)
+	auth.GET("/register", handlers.RegisterPage)
+	auth.GET("/success", handlers.SuccessPage)
+
+	//AdminPages
+	admin := e.Group("/admin")
+	admin.Use(mw.RedirectIfNotAuthenticated)
+	admin.GET("", handlers.AdminPage)
+	admin.GET("/logout", handlers.AdminLogout)
+
+	//handlers
+	e.POST("/login", handlers.Login(users))
+	e.GET("/logout", handlers.Logout)
+	e.POST("/register", handlers.Register(users))
+	e.POST("/email", handlers.CheckEmail(users))
 
 	e.Logger.Fatal(e.Start(port))
 }

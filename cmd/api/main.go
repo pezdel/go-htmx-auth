@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/pezdel/go-template/routes"
+	"github.com/pezdel/go-auth/routes"
 )
 
 func main() {

@@ -1,0 +1,18 @@
+package pages
+
+import (
+	"github.com/pezdel/go-auth/templates/partials"
+	"github.com/pezdel/go-auth/templates/shared"
+)
+
+templ AdminPage(email string) {
+	@shared.Home() {
+		@partials.AuthNavbar()
+		<main class="container">
+			Admin Page 
+			Welcome: { email }
+			<a href="#" hx-get="/admin/logout">Logout</a>
+		</main>
+		@partials.Footer()
+	}
+}

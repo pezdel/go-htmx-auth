@@ -1,0 +1,62 @@
+package partials
+
+templ EmailTaken() {
+	<span id="registerInputs" x-data="{show: true}">
+		<input
+ 			@click="show=false"
+ 			hx-post="/email"
+ 			type="email"
+ 			name="email"
+ 			placeholder="Email..."
+ 			aria-label="Email"
+ 			aria-invalid="true"
+ 			required
+		/>
+		<small x-show="show" class="error-message">
+			Email Taken!
+		</small>
+		<input
+ 			type="password"
+ 			name="password"
+ 			placeholder="Password..."
+ 			aria-label="Password"
+ 			required
+		/>
+		<input
+ 			type="password"
+ 			name="confirm"
+ 			placeholder="Confirm Password."
+ 			aria-label="Password"
+ 			required
+		/>
+	</span>
+}
+
+templ ValidEmail(email string) {
+	<span id="registerInputs">
+		<input
+ 			hx-post="/email"
+ 			type="email"
+ 			name="email"
+ 			value={ email }
+ 			aria-label="Email"
+ 			aria-invalid="false"
+ 			required
+		/>
+		<input
+ 			type="password"
+ 			name="password"
+ 			placeholder="Password..."
+ 			aria-label="Password"
+ 			autofocus
+ 			required
+		/>
+		<input
+ 			type="password"
+ 			name="confirm"
+ 			placeholder="Confirm Password."
+ 			aria-label="Password"
+ 			required
+		/>
+	</span>
+}

@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo/v4"
+	"github.com/pezdel/go-auth/routes/handlers"
 )
 
 const (
@@ -26,7 +27,7 @@ func (r *Router) httpErrorHandler(err error, c echo.Context) {
 	}
 
 	if code != http.StatusInternalServerError {
-		_ = r.ErrorPage(c)
+		_ = handlers.ErrorPage(c)
 	} else {
 		// log.Error(err)
 		_ = HTTPServerError(c)

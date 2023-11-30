@@ -8,7 +8,7 @@ window.app = function() {
         sidebar: false,
         toggle(){
             this.sidebar = !this.sidebar
-        }
+        },
     }
 }
 

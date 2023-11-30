@@ -1,0 +1,25 @@
+package partials
+
+templ LoginInvalid(email string) {
+	<span id="loginInputs" x-data="{show: true}">
+		<input
+ 			type="email"
+ 			name="email"
+ 			value={ email }
+ 			aria-label="Email"
+ 			aria-invalid="true"
+ 			required
+		/>
+		<input
+ 			@focus="show=false"
+ 			type="password"
+ 			name="password"
+ 			aria-label="Password"
+ 			aria-invalid="true"
+ 			required
+		/>
+		<small x-show="show" class="error-message">
+			Incorrect Email/Password!
+		</small>
+	</span>
+}

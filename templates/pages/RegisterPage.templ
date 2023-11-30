@@ -1,0 +1,60 @@
+package pages
+
+import (
+	"github.com/pezdel/go-auth/templates/partials"
+	"github.com/pezdel/go-auth/templates/shared"
+)
+
+templ RegisterPage () {
+	@shared.Home() {
+		@partials.AuthNavbar()
+		<main class="container">
+			<article class="grid registerArticle">
+				<div>
+					<hgroup>
+						<h1>Register</h1>
+						<h2>A minimalist layout for Register</h2>
+					</hgroup>
+					<form hx-post="/register" hx-target="#registerInputs" hx-swap="outerHTML">
+						<span id="registerInputs" hx-target="this" hx-swap="outerHTML">
+							<input
+ 								hx-post="/email"
+ 								type="email"
+ 								name="email"
+ 								placeholder="Email..."
+ 								aria-label="Email"
+ 								required
+							/>
+							<input
+ 								type="password"
+ 								name="password"
+ 								placeholder="Password..."
+ 								aria-label="Password"
+ 								required
+							/>
+							<input
+ 								type="password"
+ 								name="confirm"
+ 								placeholder="Confirm Password."
+ 								aria-label="Password"
+ 								required
+							/>
+						</span>
+						<div class="register-bot">
+							<span></span>
+							<a href="/auth/login">Already have a account?</a>
+						</div>
+						<button type="submit" class="contrast">Register</button>
+					</form>
+				</div>
+				<div></div>
+			</article>
+			<div class="demo secondary">
+				<small>
+					Try Taken Email: a.a@gmail.com	
+				</small>
+			</div>
+		</main>
+		@partials.Footer()
+	}
+}

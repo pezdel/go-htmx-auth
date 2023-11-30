@@ -1,0 +1,24 @@
+package pages
+
+import (
+	"github.com/pezdel/go-auth/templates/partials"
+	"github.com/pezdel/go-auth/templates/shared"
+)
+
+templ HomePage(auth bool) {
+	@shared.Home() {
+		@partials.HomeNavbar(auth)
+		<main class="container">
+			<hgroup>
+				<h1>Golang Basic Auth Example</h1>
+				<h2>Basic Auth example not secure at all so just use fake info or the sample email/password combo, code can be found on the github link below too.</h2>
+			</hgroup>
+			<ul>
+				<li>Golang(templ)</li>
+				<li>HTMX</li>
+				<li>Picocss</li>
+			</ul>
+		</main>
+		@partials.Footer()
+	}
+}

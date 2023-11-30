@@ -1,0 +1,16 @@
+package pages
+
+import (
+	"github.com/pezdel/go-auth/templates/partials"
+	"github.com/pezdel/go-auth/templates/shared"
+)
+
+templ SuccessPage() {
+	@shared.Home() {
+		@partials.AuthNavbar()
+		<main>
+			Success Page
+		</main>
+		@partials.Footer()
+	}
+}
