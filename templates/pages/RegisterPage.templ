@@ -18,7 +18,7 @@ templ RegisterPage () {
 					<form hx-post="/register" hx-target="#registerInputs" hx-swap="outerHTML">
 						<span id="registerInputs" hx-target="this" hx-swap="outerHTML">
 							<input
- 								hx-post="/email"
+ 								hx-post="/checkEmail"
  								type="email"
  								name="email"
  								placeholder="Email..."

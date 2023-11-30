@@ -9,9 +9,13 @@ templ AdminPage(email string) {
 	@shared.Home() {
 		@partials.AuthNavbar()
 		<main class="container">
-			Admin Page 
-			Welcome: { email }
-			<a href="#" hx-get="/admin/logout">Logout</a>
+			<article id="article">
+				<h2>Admin Page</h2>
+				<p>
+					<div>Email: { email }</div>
+				</p>
+				<footer></footer>
+			</article>
 		</main>
 		@partials.Footer()
 	}

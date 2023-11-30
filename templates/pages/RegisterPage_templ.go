@@ -55,7 +55,7 @@ func RegisterPage() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h2></hgroup><form hx-post=\"/register\" hx-target=\"#registerInputs\" hx-swap=\"outerHTML\"><span id=\"registerInputs\" hx-target=\"this\" hx-swap=\"outerHTML\"><input hx-post=\"/email\" type=\"email\" name=\"email\" placeholder=\"Email...\" aria-label=\"Email\" required> <input type=\"password\" name=\"password\" placeholder=\"Password...\" aria-label=\"Password\" required> <input type=\"password\" name=\"confirm\" placeholder=\"Confirm Password.\" aria-label=\"Password\" required></span><div class=\"register-bot\"><span></span> <a href=\"/auth/login\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h2></hgroup><form hx-post=\"/register\" hx-target=\"#registerInputs\" hx-swap=\"outerHTML\"><span id=\"registerInputs\" hx-target=\"this\" hx-swap=\"outerHTML\"><input hx-post=\"/checkEmail\" type=\"email\" name=\"email\" placeholder=\"Email...\" aria-label=\"Email\" required> <input type=\"password\" name=\"password\" placeholder=\"Password...\" aria-label=\"Password\" required> <input type=\"password\" name=\"confirm\" placeholder=\"Confirm Password.\" aria-label=\"Password\" required></span><div class=\"register-bot\"><span></span> <a href=\"/auth/login\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

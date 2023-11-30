@@ -1,8 +1,6 @@
 package handlers
 
 import (
-	"fmt"
-
 	"github.com/a-h/templ"
 	"github.com/labstack/echo/v4"
 	"github.com/pezdel/go-auth/templates/pages"
@@ -29,8 +27,8 @@ func SuccessPage(c echo.Context) error {
 }
 
 func AdminPage(c echo.Context) error {
-	//should just use a middleware to read the token?
-	return HTML(c, pages.AdminPage("Sample Email"))
+	val, _ := c.Cookie("AuthJWT")
+	return HTML(c, pages.AdminPage(val.Value))
 }
 
 func ErrorPage(c echo.Context) error {

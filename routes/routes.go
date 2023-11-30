@@ -55,13 +55,13 @@ func (r *Router) Serve(port string) {
 	admin := e.Group("/admin")
 	admin.Use(mw.RedirectIfNotAuthenticated)
 	admin.GET("", handlers.AdminPage)
-	admin.GET("/logout", handlers.AdminLogout)
 
 	//handlers
 	e.POST("/login", handlers.Login(users))
-	e.GET("/logout", handlers.Logout)
 	e.POST("/register", handlers.Register(users))
-	e.POST("/email", handlers.CheckEmail(users))
+	e.POST("/checkEmail", handlers.CheckEmail(users))
+	e.GET("/logout", handlers.Logout)
+	e.GET("/adminLogout", handlers.AdminLogout)
 
 	e.Logger.Fatal(e.Start(port))
 }

@@ -23,8 +23,7 @@ func Login(users map[string]domain.User) echo.HandlerFunc {
 		}
 
 		//valid user
-
-		c.SetCookie(createCookie("We created some cookie"))
+		c.SetCookie(createCookie(user.Email))
 		c.Response().Header().Add("HX-Redirect", "/admin")
 		return c.String(http.StatusOK, "")
 	}
@@ -33,7 +32,7 @@ func Login(users map[string]domain.User) echo.HandlerFunc {
 func createCookie(name string) *http.Cookie {
 	cookie := &http.Cookie{
 		Name:     "AuthJWT",
-		Value:    "someValue",
+		Value:    name,
 		Expires:  time.Now().Add(24 * time.Hour), // Expires in 24 hours
 		Path:     "/",
 		HttpOnly: true,
