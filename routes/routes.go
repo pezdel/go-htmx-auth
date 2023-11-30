@@ -27,7 +27,7 @@ func (r *Router) Serve(port string) {
 	e := echo.New()
 	e.HTTPErrorHandler = r.httpErrorHandler
 
-	assetHandler := http.FileServer(rice.MustFindBox("../assets/").HTTPBox())
+	assetHandler := http.FileServer(rice.MustFindBox("assets/").HTTPBox())
 	e.GET("/", echo.WrapHandler(assetHandler))
 	e.GET("/assets*", echo.WrapHandler(http.StripPrefix("/assets", assetHandler)))
 
