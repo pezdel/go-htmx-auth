@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for go-auth-wandering-wave-1683-floral-butterfly-7649 on 2023-11-30T14:16:25-06:00
+# fly.toml app configuration file generated for go-auth-billowing-field-3102-bold-wildflower-2192-dawn-thunder-995 on 2023-11-30T15:09:01-06:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "go-auth-wandering-wave-1683-floral-butterfly-7649"
+app = "go-auth-billowing-field-3102-bold-wildflower-2192-dawn-thunder-995"
 primary_region = "dfw"
 
 [build]
@@ -25,6 +25,3 @@ primary_region = "dfw"
   cpu_kind = "shared"
   cpus = 1
   memory_mb = 1024
-
-[build.args]
-  BP_KEEP_FILES = "assets/*"
